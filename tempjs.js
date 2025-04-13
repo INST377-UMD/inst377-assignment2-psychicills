@@ -24,14 +24,17 @@ function vopc(){
   if (annyang) {
     // Let's define a command.
     const commands = {
-    //  'hello': () => { alert('Hello world!'); },
-      'Navigate to *page (page)':redirect 
+      'hello': () => { alert('Hello world!'); },
+      'Navigate to *page': (page) => {
+        console.log(page)
+        window.location.href = `${page}page.html`;
+      },
+      'Change the Color to *color': (color) => {
+        console.log(color)
+        document.body.style.backgroundColor = color;
+      } 
     };
-
-    var redirect = function(page){
-      alert('reached!');
-      window.href.redirect = page.html; 
-    }
+    
     // Add our commands to annyang
     annyang.addCommands(commands);
   
