@@ -32,7 +32,24 @@ function vopc(){
   
     // Start listening.
     annyang.start();
+
+    console.log("started")
   }
   
 }
-window.onload = quoteJS, vopc;
+
+function start(){
+  if (annyang){
+    vopc();
+    annyang.start();
+    console.log("start again")
+  }
+}
+
+function stop(){
+  if(annyang){
+    annyang.abort();
+    console.log("stopped")
+  }
+}
+window.onload = quoteJS;

@@ -21,8 +21,8 @@ that API is here
 <html>
     <head>
         <title>Home Page</title>
-       <<script src = "tempjs.js" defer></script>
-        <!--<script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script> -->
+       <script src = "tempjs.js" defer></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script> 
         <link rel = "stylesheet" href = "tempcss.css">
     </head>
 <body>
@@ -69,6 +69,10 @@ that API is here
                     </ul>
                 </li>
             </ul>
+            <div id = "innerAudioDiv">
+                <button onclick="stop()">Turn Off Audio </button>
+                <button onclick="start()">Turn On Audio</button>
+            </div>
         </div>
 
     </body>
