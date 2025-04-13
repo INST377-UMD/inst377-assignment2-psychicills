@@ -1,0 +1,48 @@
+<!--Navigation Bar (5 pts)
+Must have 3 Pages
+Home
+Stocks
+Dogs
+The navigation must have a hover on the li element, which changes color
+If you click on the Nav Element it must go to the corresponding page,
+ Example Clicking Games should go to Games, 
+ and this should work on any of the 3 pages
+
+The Homepage should have 2 Buttons 
+    Stocks
+    Dogs
+These should be custom CSS Buttons, 
+I recommend using this site to be able to use recommended CSS Stylings 
+for Buttons
+The Homepage should retrieve and display Quote every time it loads, 
+that API is here
+ -->
+
+<html>
+    <head>
+        <title>Home Page</title>
+        <script src = "tempjs.js" defer></script>
+        <link rel = "stylesheet" href = "tempcss.css">
+    </head>
+<h1>INST377 - Activities</h1>
+    <nav  class = "navClass">
+        <ul>
+            <li onclick = "window.location.href = 'temphomepage.html';">Home</li>
+            <li  onclick = "window.location.href = 'tempstockpage.html';">Stocks</li>
+            <li  onclick = "window.location.href = 'tempdogpage.html';">Dogs</li>
+        </ul>
+    </nav>
+    <h3>These are some different activities we can try!</h3>
+    <div id = "alignTs" >
+        <button class="button-49" role="button" 
+        onclick = "window.location.href = 'tempstockpage.html';">Stocks</button>
+        <button onclick = "window.location.href = 'tempdogpage.html';"
+         class="button-49" role="button">Dogs</button>
+    </div>  
+    <div id = "quote" style="margin-top: 10px;">
+        <h3>Quote of the Page Load</h3>
+        <br>
+        <p id = "quoteShi"></p>
+    </div>
+
+</html>
