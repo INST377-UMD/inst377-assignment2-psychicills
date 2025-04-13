@@ -24,9 +24,14 @@ function vopc(){
   if (annyang) {
     // Let's define a command.
     const commands = {
-      'hello': () => { alert('Hello world!'); }
+    //  'hello': () => { alert('Hello world!'); },
+      'Navigate to *page (page)':redirect 
     };
-  
+
+    var redirect = function(page){
+      alert('reached!');
+      window.href.redirect = page.html; 
+    }
     // Add our commands to annyang
     annyang.addCommands(commands);
   
@@ -35,8 +40,9 @@ function vopc(){
 
     console.log("started")
   }
-  
 }
+  
+
 
 function start(){
   if (annyang){
