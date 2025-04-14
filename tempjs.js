@@ -94,21 +94,51 @@ async function chartFunc(){
 }
 
 async function tickData(){
-  const currentTime = Math.floor(Date.now() / 1000);
-  const subTime1 = document.getElementById("tSelect").value;
-  function subTimeFunc(){
-    let subTime2 = currentTime - (30 * 24 * 60 * 60);
-    if (subTime1 === 60) {
-      subTime2 = currentTime - (60 * 24 * 60 * 60)
-    }else if (subTime1 === 90){
-      subTime2 = currentTime - (90 * 24 * 60 * 60)
-    }
-    return subTime2;
-  }
+  document.getElementById("stockForm").addEventListener("submit", async function(event) {
+    event.preventDefault();
 
+    const currentTime = Math.floor(Date.now() / 1000);
+    const subTime1 = document.getElementById("tSelect").value;
+
+    console.log(typeof subTime1)
+      function subTimeFunc(){
+        let subTime2 = 0;
+          if (subTime1 === "30"){
+            subTime2 = currentTime - (30 * 24 * 60 * 60)
+          }else if (subTime1 === "60") {
+            subTime2 = currentTime - (60 * 24 * 60 * 60)
+          }else if (subTime1 === "90"){
+            subTime2 = currentTime - (90 * 24 * 60 * 60)
+          }
+          return subTime2;
+      }
+  
+  let stock = document.getElementById("tLook").value;
   console.log(subTimeFunc())
- // const tick = await fetch (`https://api.polygon.io/v2/aggs/ticker/${stock}/range/${mult}/day/${subTimeFunc()}/${currentTime}?
-    //adjusted=true&sort=asc&limit=120&apiKey=rbNwfBAdlh4UdKRby4MJLgtP0dSvpTc`)
+
+  const convertedCurrent = new Date(currentTime * 1000);
+  const convertedPrevious = new Date(subTimeFunc() * 1000 );
+  
+  const tConvertedCurrent = (convertedCurrent.toISOString().split("T")[0]);
+  const tConvertedPrevious = (convertedPrevious.toISOString().split("T")[0]);
+  console.log(typeof stock)
+
+  async function loadAPI(){
+    return fetch (`https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/${tConvertedPrevious}/${tConvertedCurrent}?
+      adjusted=true&sort=asc&limit=120&apiKey=rbNwfBAdlh4UdKRby4MJLgtP0dSvpTcr`)
+      .then(data =>{
+        return data.c
+      })
+    
+    }
+  
+
+    const apiResponse = await loadAPI();
+    const result = await apiResponse;
+
+    console.log(result)
+
+  });
 }
 
 console.log(tickData())
