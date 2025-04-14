@@ -63,82 +63,76 @@ function stop(){
 
 //populate this with the fetch api Ticker shitter 
 //async func  for stock
-async function chartFunc(){
-  document.getElementById("stockForm").addEventListener("submit", function(event) {
-    event.preventDefault();
-    console.log(document.getElementById("tSelect").value)
-    console.log(document.getElementById("tLook").value)
+ function chartFunc(){
+    //console.log(document.getElementById("tSelect").value)
+    //console.log(document.getElementById("tLook").value)
+    document.getElementById("stockForm").addEventListener("submit", async function(event) {
+      event.preventDefault();
 
     const ctx = document.getElementById('myChart');
-    const epoch = Math.floor(Date.now() / 1000);
-
+    //console.log(tickData())
+    const {prices, time} = await tickData();
+    
+    console.log(prices)
+    console.log(time)
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: [1, 2, 3, 4, 5],
+        labels: time,
         datasets: [{
           label: '$ Stock Price',
-          data: [12, 19, 3, 5, 2, 3],
-          borderWidth: 1
+          data: prices,
+          fill: false,
+          tension: .1
         }]
       },
-      options: {
-        scales: {
-          y: {
-            beginAtZero: true
-          }
-        }
-      }
     });
   });
 }
 
 async function tickData(){
-  document.getElementById("stockForm").addEventListener("submit", async function(event) {
-    event.preventDefault();
+  
 
     const currentTime = Math.floor(Date.now() / 1000);
     const subTime1 = document.getElementById("tSelect").value;
 
     console.log(typeof subTime1)
-      function subTimeFunc(){
-        let subTime2 = 0;
-          if (subTime1 === "30"){
-            subTime2 = currentTime - (30 * 24 * 60 * 60)
-          }else if (subTime1 === "60") {
-            subTime2 = currentTime - (60 * 24 * 60 * 60)
-          }else if (subTime1 === "90"){
-            subTime2 = currentTime - (90 * 24 * 60 * 60)
-          }
-          return subTime2;
-      }
   
   let stock = document.getElementById("tLook").value;
-  console.log(subTimeFunc())
 
   const convertedCurrent = new Date(currentTime * 1000);
-  const convertedPrevious = new Date(subTimeFunc() * 1000 );
-  
+
+  const previous = new Date();
+  previous.setDate(previous.getDate() - subTime1)
+
   const tConvertedCurrent = (convertedCurrent.toISOString().split("T")[0]);
-  const tConvertedPrevious = (convertedPrevious.toISOString().split("T")[0]);
-  console.log(typeof stock)
-
-  async function loadAPI(){
-    return fetch (`https://api.polygon.io/v2/aggs/ticker/AAPL/range/1/day/${tConvertedPrevious}/${tConvertedCurrent}?
-      adjusted=true&sort=asc&limit=120&apiKey=rbNwfBAdlh4UdKRby4MJLgtP0dSvpTcr`)
-      .then(data =>{
-        return data.c
-      })
-    
-    }
+  const tConvertedPrevious = (previous.toISOString().split("T")[0]);
   
+  console.log(tConvertedPrevious)
+  let pr = [];
+  let t = [];
+  console.log("here")
+   await fetch(`https://api.polygon.io/v2/aggs/ticker/${stock}/range/1/day/${tConvertedPrevious}/${tConvertedCurrent}?
+    adjusted=true&sort=asc&limit=120&apiKey=rbNwfBAdlh4UdKRby4MJLgtP0dSvpTcr`)
+    .then(response => response.json()).then(data =>{
+      console.log("here2")
+      pr.push(data.results.map(st => st.c))
 
-    const apiResponse = await loadAPI();
-    const result = await apiResponse;
+    //  console.log(r)
 
-    console.log(result)
+      t.push( data.results.map(t=> new Date(t.t).toISOString().split("T")[0]))
 
-  });
+      //console.log(time)
+      //console.log({r, time})
+
+     // pr.push(r)
+      //t.push(time)
+      console.log(pr)
+      console.log(t)
+    })
+    console.log("here3")
+
+    console.log(pr)
+    console.log(t)
+  return {prices:pr, time:t}
 }
-
-console.log(tickData())
