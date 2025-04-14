@@ -93,3 +93,22 @@ async function chartFunc(){
   });
 }
 
+async function tickData(){
+  const currentTime = Math.floor(Date.now() / 1000);
+  const subTime1 = document.getElementById("tSelect").value;
+  function subTimeFunc(){
+    let subTime2 = currentTime - (30 * 24 * 60 * 60);
+    if (subTime1 === 60) {
+      subTime2 = currentTime - (60 * 24 * 60 * 60)
+    }else if (subTime1 === 90){
+      subTime2 = currentTime - (90 * 24 * 60 * 60)
+    }
+    return subTime2;
+  }
+
+  console.log(subTimeFunc())
+ // const tick = await fetch (`https://api.polygon.io/v2/aggs/ticker/${stock}/range/${mult}/day/${subTimeFunc()}/${currentTime}?
+    //adjusted=true&sort=asc&limit=120&apiKey=rbNwfBAdlh4UdKRby4MJLgtP0dSvpTc`)
+}
+
+console.log(tickData())
