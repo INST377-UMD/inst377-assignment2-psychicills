@@ -71,21 +71,31 @@ function stop(){
 
     const ctx = document.getElementById('myChart');
     //console.log(tickData())
-    const {prices, time} = await tickData();
-    
+    const {prices, time} = await tickData();;
+    const tflat = time.flat()
+    const pflat = prices.flat()
     console.log(prices)
     console.log(time)
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: time,
+        labels: tflat,
         datasets: [{
           label: '$ Stock Price',
-          data: prices,
+          data: pflat,
           fill: false,
-          tension: .1
+          tension: .04
         }]
-      },
+      },options: {
+        scales: {
+          x: {
+            ticks: {
+              maxTicksLimit: 5,
+              autoSkip: true
+            }
+          }
+        }
+      }
     });
   });
 }
