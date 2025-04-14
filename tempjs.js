@@ -60,27 +60,36 @@ function stop(){
   }
 }
 
-function chartFunc(){
-  const ctx = document.getElementById('myChart');
 
-  new Chart(ctx, {
-    type: 'bar',
-    data: {
-      labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-      datasets: [{
-        label: '# of Votes',
-        data: [12, 19, 3, 5, 2, 3],
-        borderWidth: 1
-      }]
-    },
-    options: {
-      scales: {
-        y: {
-          beginAtZero: true
+//populate this with the fetch api Ticker shitter 
+//async func  for stock
+async function chartFunc(){
+  document.getElementById("stockForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+    console.log(document.getElementById("tSelect").value)
+    console.log(document.getElementById("tLook").value)
+
+    const ctx = document.getElementById('myChart');
+    const epoch = Math.floor(Date.now() / 1000);
+
+    new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: [1, 2, 3, 4, 5],
+        datasets: [{
+          label: '$ Stock Price',
+          data: [12, 19, 3, 5, 2, 3],
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
         }
       }
-    }
+    });
   });
 }
 
-window.onload = quoteJS, chartFunc;
