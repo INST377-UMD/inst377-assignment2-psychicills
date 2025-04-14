@@ -83,4 +83,4 @@ function chartFunc(){
   });
 }
 
-window.onload = quoteJS;
+window.onload = quoteJS, chartFunc;
