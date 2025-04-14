@@ -34,7 +34,7 @@ function vopc(){
         document.body.style.backgroundColor = color;
       } 
     };
-    
+
     // Add our commands to annyang
     annyang.addCommands(commands);
   

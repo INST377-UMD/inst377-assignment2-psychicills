@@ -1,7 +1,45 @@
-<html>
+ <html>
     <head>
-        <title>Stock Page</title>
+        <title>Home Page</title>
+       <script src = "tempjs.js" defer></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script> 
+        <link rel = "stylesheet" href = "tempcss.css">
     </head>
-<h1>idk some shit</h1>
+<body>
+    <h1>INST377 - Activities</h1>
+        <nav  class = "navClass">
+            <ul>
+                <li onclick = "window.location.href = 'homepage.html';">Home</li>
+                <li  onclick = "window.location.href = 'stockpage.html';">Stocks</li>
+                <li  onclick = "window.location.href = 'dogpage.html';">Dogs</li>
+            </ul>
+        </nav>
+    <h2>Lets chart some stocks!</h2>
+        <div id = "audioDiv" style="margin-top: 10px;">
+            <h3>In this web page there are options to Navigate using Audio!</h3>
+            <p>Ensure your Mic is enabled to use this feature:</p>
+            <ul>
+                <li> Navigate to a Different Page
+                    <ul>
+                        <li>Say: <b>Navigate to &lt;page&gt;</b></li>
+                    </ul>
+                </li>
+                <li>Change the Page Color
+                    <ul>
+                        <li>Say: <b>Change the color to &lt;color&gt;</b></li>
+                    </ul>
+                </li>
+                <li> Say Hello Back to you!
+                    <ul>
+                        <li>Say: <b>Hello</b></li>
+                    </ul>
+                </li>
+            </ul>
+            <div id = "innerAudioDiv">
+                <button onclick="stop()">Turn Off Audio </button>
+                <button onclick="start()">Turn On Audio</button>
+            </div>
+        </div>
 
+    </body>
 </html>
