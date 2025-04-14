@@ -84,17 +84,8 @@ function stop(){
           label: '$ Stock Price',
           data: pflat,
           fill: false,
-          tension: .04
+          tension: .01
         }]
-      },options: {
-        scales: {
-          x: {
-            ticks: {
-              maxTicksLimit: 5,
-              autoSkip: true
-            }
-          }
-        }
       }
     });
   });
@@ -146,3 +137,42 @@ async function tickData(){
     console.log(t)
   return {prices:pr, time:t}
 }
+
+async function redditStock(){
+  return fetch (`https://tradestie.com/api/v1/apps/reddit?date=2022-04-03`)
+  .then(response => response.json())
+  .then(data => {
+      let r = data.slice(0, 5)
+      return r
+  })
+  
+}
+
+async function populateRed(){
+  document.getElementById("redd");
+  const apiResponse = await redditStock();
+  const result = await apiResponse;
+
+  result.forEach(stock =>{
+      const row = document.createElement('tr');
+
+      const tick = document.createElement('td');
+      const comments = document.createElement('td');
+      const sentiment = document.createElement('td');
+      
+
+      comments.innerHTML = stock.no_of_comments;
+      tick.innerHTML = stock.ticker;
+      sentiment.innerHTML = stock.sentiment;
+
+      row.append(tick);
+      row.append(comments);
+
+      //gotta make this an image
+      row.append(sentiment);
+      
+      redd.append(row);
+  })
+}
+
+

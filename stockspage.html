@@ -7,7 +7,7 @@
         <link rel = "stylesheet" href = "tempcss.css">
     </head>
 
-<body>
+<body onload = "populateRed()">
     <h1>INST377 - Activities</h1>
         <nav  class = "navClass">
             <ul>
@@ -18,7 +18,7 @@
         </nav>
     <h2>Lets chart some stocks!</h2>
     <form id = "stockForm">
-        <input type="text" placeholder="Look up some stock..." id = "tLook">
+        <input type="text" placeholder="Look up some stock..." id = "tLook" required maxlength="5">
         <br>
         <select id = "tSelect" >
             <option value = "30">30 days</option>
@@ -32,7 +32,13 @@
         <div>
             <canvas id="myChart"></canvas>
           </div>
-    
+
+          <table id="redd">
+            <tr>
+                <th>Comment Count</th>
+               
+            </tr>
+        </table>
     
     </form>
         <div id = "audioDiv" style="margin-top: 10px;">
