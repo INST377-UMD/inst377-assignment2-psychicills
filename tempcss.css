@@ -95,6 +95,10 @@ body{
   display: flex;
 }
 
+#dbStyle{
+  display: none;
+}
+
 /*fancy ahh button code*/
 #alignTs{
     display: flex;

@@ -220,7 +220,7 @@ async function dawg(){
         f = data.message;
         //console.log(typeof f)
        // console.log("reached")
-       console.log(f)
+       //console.log(f)
       return f
     })
 
@@ -233,14 +233,42 @@ async function populateDawg(){
   for (i = 0; i < 10; i++){
     const apiResponse = await dawg();
     const result = apiResponse;
-    console.log(result)
+    //console.log(result)
     //console.log(f.textContent)
     let c = document.getElementById(`pic${i}`)
-    console.log(c.src)
+    //console.log(c.src)
     c.src = result;
     console.log(c.src)
     c.width = 500;
     c.height = 500;
     meWhenISlide.appendChild(c)
   }
+}
+
+//need: name, desc, min life, max life
+async function dogInfo(){
+  const breeds = []
+  return fetch("https://dogapi.dog/api/v2/breeds")
+  .then(r => r.json())
+  .then(d => {
+    console.log(d.data)
+    return d.data
+  })
+}
+
+async function populateButton(){
+  //why error 
+  document.getElementById("dbuttons");
+  const apiResponse = await dogInfo();
+  const result = await apiResponse;
+  console.log(result)
+  console.log(result.attributes)
+    for (i = 0; i < 10; i++){
+      const b = document.createElement("button")
+      const d = document.createElement("div")
+      console.log(result.attributes)
+      b.textContent = result.attributes;
+      
+      dbuttons.append(b)
+    }
 }
