@@ -86,7 +86,14 @@ body{
   
 }
 
-
+#meWhenISlide{
+  width:612px; 
+  height:612px;
+  align-items: center;
+  justify-content: center;
+  margin: auto;
+  display: flex;
+}
 
 /*fancy ahh button code*/
 #alignTs{

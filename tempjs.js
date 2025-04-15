@@ -207,10 +207,26 @@ async function populateRed(){
         row.appendChild(bear);
        
       }
-     
       
       redd.append(row);
   })
 }
 
+function dawg(){
+  document.getElementById("meWhenISlide");
+  
+  
+  for (i = 0; i < 10; i++){
+    fetch (`https://dog.ceo/api/breeds/image/random`)
+    .then(response => response.json())
+    .then(data => {
+        let c = document.getElementById(`pic${i}`)
+        let img = document.createElement(`img`);
+        c.src = data.message;
+        meWhenISlide.appendChild(c)
+        console.log("reached")
+    
+    })
+  }
+}
 
