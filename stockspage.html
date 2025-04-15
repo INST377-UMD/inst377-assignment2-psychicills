@@ -13,7 +13,7 @@
             <ul>
                 <li onclick = "window.location.href = 'homepage.html';">Home</li>
                 <li  onclick = "window.location.href = 'stockspage.html';">Stocks</li>
-                <li  onclick = "window.location.href = 'dogpage.html';">Dogs</li>
+                <li  onclick = "window.location.href = 'dogspage.html';">Dogs</li>
             </ul>
         </nav>
     <h2>Lets chart some stocks!</h2>
@@ -48,6 +48,11 @@
             <h3>In this web page there are options to Navigate using Audio!</h3>
             <p>Ensure your Mic is enabled to use this feature:</p>
             <ul>
+                <li> Look Up Stock
+                    <ul>
+                        <li>Say: <b> Look Up &lt;stock&gt;</b></li>
+                    </ul>
+                </li>
                 <li> Navigate to a Different Page
                     <ul>
                         <li>Say: <b>Navigate to &lt;page&gt;</b></li>
@@ -63,11 +68,7 @@
                         <li>Say: <b>Hello</b></li>
                     </ul>
                 </li>
-                <li> Look Up Stock
-                    <ul>
-                        <li>Say: <b> Look Up &lt;stock&gt;</b></li>
-                    </ul>
-                </li>
+                
             </ul>
             <div id = "innerAudioDiv">
                 <button onclick="stop()">Turn Off Audio </button>

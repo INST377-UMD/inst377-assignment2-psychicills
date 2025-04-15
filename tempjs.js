@@ -145,9 +145,6 @@ async function tickData(){
 
       t.push( data.results.map(t=> new Date(t.t).toISOString().split("T")[0]))
 
-      //console.log(time)
-      //console.log({r, time})
-
      // pr.push(r)
       //t.push(time)
       console.log(pr)
@@ -273,7 +270,7 @@ async function populateButton(){
       b.textContent = result[i].attributes.name;
      
       b.className = "button-24"
-
+     
       b.setAttribute("textConent",result[i].attributes.name )
      
       console.log(b.textContent)

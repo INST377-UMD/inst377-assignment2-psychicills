@@ -264,7 +264,13 @@ body{
 }
 
 /*dawg button*/
-
+#dbuttons{
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  
+  margin: auto;
+}
 
 /* CSS */
 .button-24 {
