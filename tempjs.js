@@ -168,8 +168,22 @@ async function populateRed(){
       row.append(tick);
       row.append(comments);
 
+      const bull = document.createElement("img")
+      const bear = document.createElement("img")
+      console.log("here1")
+      bull.src = "https://static2.bigstockphoto.com/0/7/4/large2/470293591.jpg"
+      bear.src = "https://img.freepik.com/premium-photo/bearish-stock-market-crash-economy-crisis-concept-with-digital-red-arrow-glowing-financial-chart-candlestick-bear-illustration-dark-background-with-indicators-3d-rendering_670147-39237.jpg?w=996"
+      bear.width = 200;
+      bull.width = 200;
       //gotta make this an image
-      row.append(sentiment);
+      if(sentiment.innerHTML === "Bullish"){
+        row.appendChild(bull);
+        console.log("here2")
+      }else{
+        row.appendChild(bear);
+       
+      }
+      
       
       redd.append(row);
   })
