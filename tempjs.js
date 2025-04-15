@@ -247,7 +247,7 @@ async function populateDawg(){
 
 //need: name, desc, min life, max life
 async function dogInfo(){
-  const breeds = []
+  
   return fetch("https://dogapi.dog/api/v2/breeds")
   .then(r => r.json())
   .then(d => {
@@ -258,17 +258,27 @@ async function dogInfo(){
 
 async function populateButton(){
   //why error 
-  document.getElementById("dbuttons");
+  document.getElementById("info");
   const apiResponse = await dogInfo();
   const result = await apiResponse;
-  console.log(result)
-  console.log(result.attributes)
+  console.log(result[0].attributes)
+  //console.log(result.attributes)
     for (i = 0; i < 10; i++){
       const b = document.createElement("button")
       const d = document.createElement("div")
+      d.style.border = "solid black 2px";
       console.log(result.attributes)
-      b.textContent = result.attributes;
-      
+      b.textContent = result[i].attributes.name;
+      d.innerHTML = `
+      <h2>Name: ${result[i].attributes.name}</h2>
+      <h3> Description: ${result[i].attributes.description}
+      <h3> Min Life: ${result[i].attributes}
+      `
       dbuttons.append(b)
+      info.append(d)
     }
+    //addEventListener("dbuttons").addEventListener.click("click", function(){
+    //  getElementById("info").style.display = block;
+    //});
+  
 }
