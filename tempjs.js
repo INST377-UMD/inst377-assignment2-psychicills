@@ -212,21 +212,35 @@ async function populateRed(){
   })
 }
 
-function dawg(){
-  document.getElementById("meWhenISlide");
-  
-  
-  for (i = 0; i < 10; i++){
-    fetch (`https://dog.ceo/api/breeds/image/random`)
+async function dawg(){
+  let f = "";
+    return fetch (`https://dog.ceo/api/breeds/image/random`)
     .then(response => response.json())
     .then(data => {
-        let c = document.getElementById(`pic${i}`)
-        let img = document.createElement(`img`);
-        c.src = data.message;
-        meWhenISlide.appendChild(c)
-        console.log("reached")
-    
+        f = data.message;
+        //console.log(typeof f)
+       // console.log("reached")
+       console.log(f)
+      return f
     })
-  }
+
+    
+
 }
 
+async function populateDawg(){
+  document.getElementById("meWhenISlide");
+  for (i = 0; i < 10; i++){
+    const apiResponse = await dawg();
+    const result = apiResponse;
+    console.log(result)
+    //console.log(f.textContent)
+    let c = document.getElementById(`pic${i}`)
+    console.log(c.src)
+    c.src = result;
+    console.log(c.src)
+    c.width = 500;
+    c.height = 500;
+    meWhenISlide.appendChild(c)
+  }
+}
