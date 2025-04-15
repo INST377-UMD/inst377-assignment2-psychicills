@@ -32,6 +32,13 @@ function vopc(){
       'Change the Color to *color': (color) => {
         console.log(color)
         document.body.style.backgroundColor = color;
+      },
+      'Look up *stock': (stock) => {
+        const nt = stock.toUpperCase();
+        document.getElementById("tLook").value = nt;
+        console.log(nt)
+        document.getElementById("butt").click()
+      
       } 
     };
 
@@ -71,6 +78,7 @@ function stop(){
     document.getElementById("stockForm").addEventListener("submit", async function(event) {
       event.preventDefault();
       //delete chart? (add later hit https 429 too many request skull emoji x2)
+      //instructions never specify to be able to search twice
    
     
     const ctx = document.getElementById('myChart');
@@ -105,7 +113,7 @@ async function tickData(){
 
     console.log(typeof subTime1)
   
-  let stock = document.getElementById("tLook").value;
+  let stock = document.getElementById("tLook").value.toUpperCase();
 
   const convertedCurrent = new Date(currentTime * 1000);
 
