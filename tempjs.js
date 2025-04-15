@@ -74,13 +74,16 @@ function stop(){
  function chartFunc(){
     //console.log(document.getElementById("tSelect").value)
     //console.log(document.getElementById("tLook").value)
-  
+    var c;
     document.getElementById("stockForm").addEventListener("submit", async function(event) {
       event.preventDefault();
       //delete chart? (add later hit https 429 too many request skull emoji x2)
       //instructions never specify to be able to search twice
    
-    
+      if (c) {
+        c.destroy();
+      }
+
     const ctx = document.getElementById('myChart');
     //console.log(tickData())
     const {prices, time} = await tickData();;
@@ -88,7 +91,7 @@ function stop(){
     const pflat = prices.flat()
     console.log(prices)
     console.log(time)
-    var c = new Chart(ctx, {
+   c = new Chart(ctx, {
       type: 'line',
       data: {
         labels: tflat,
