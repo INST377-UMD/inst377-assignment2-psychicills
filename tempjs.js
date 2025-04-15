@@ -267,18 +267,33 @@ async function populateButton(){
       const b = document.createElement("button")
       const d = document.createElement("div")
       d.style.border = "solid black 2px";
-      console.log(result.attributes)
+      //console.log(result.attributes)
       b.textContent = result[i].attributes.name;
+      d.style.backgroundColor = "white"
+      d.id = `d${i}`
+      b.id = `b${i}`
+      console.log(b.id)
       d.innerHTML = `
       <h2>Name: ${result[i].attributes.name}</h2>
       <h3> Description: ${result[i].attributes.description}
-      <h3> Min Life: ${result[i].attributes}
+      <h3> Min Life: ${result[i].attributes.life.min} <h3>
+      <h3> Max Life: ${result[i].attributes.life.max} <h3>
       `
       dbuttons.append(b)
       info.append(d)
+      document.getElementById(`d${i}`).style.display = "none";
+
+     // document.getElementById(`b${i}`).addEventListener("click", function(){
+       // document.getElementById(`d${i}`).style.display = "block";
+     // });
     }
-    //addEventListener("dbuttons").addEventListener.click("click", function(){
-    //  getElementById("info").style.display = block;
-    //});
+    
   
 }
+
+async function loadFunc() {
+  await populateButton();
+  await simpleslider.getSlider();
+  await populateDawg();
+}
+
