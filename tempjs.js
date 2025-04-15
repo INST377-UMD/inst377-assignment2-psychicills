@@ -61,14 +61,18 @@ function stop(){
 }
 
 
+
 //populate this with the fetch api Ticker shitter 
 //async func  for stock
  function chartFunc(){
     //console.log(document.getElementById("tSelect").value)
     //console.log(document.getElementById("tLook").value)
+  
     document.getElementById("stockForm").addEventListener("submit", async function(event) {
       event.preventDefault();
-
+      //delete chart? (add later hit https 429 too many request skull emoji x2)
+   
+    
     const ctx = document.getElementById('myChart');
     //console.log(tickData())
     const {prices, time} = await tickData();;
@@ -76,7 +80,7 @@ function stop(){
     const pflat = prices.flat()
     console.log(prices)
     console.log(time)
-    new Chart(ctx, {
+    var c = new Chart(ctx, {
       type: 'line',
       data: {
         labels: tflat,
@@ -86,9 +90,11 @@ function stop(){
           fill: false,
           tension: .01
         }]
-      }
+      },
     });
+ 
   });
+ 
 }
 
 async function tickData(){
@@ -164,17 +170,23 @@ async function populateRed(){
       comments.innerHTML = stock.no_of_comments;
       tick.innerHTML = stock.ticker;
       sentiment.innerHTML = stock.sentiment;
-
-      row.append(tick);
+      
+      const url = document.createElement('a');
+      url.href = `https://finance.yahoo.com/quote/${tick.innerHTML}/`
+      url.textContent = tick.innerHTML;
+      
+      row.append(url);
       row.append(comments);
 
       const bull = document.createElement("img")
       const bear = document.createElement("img")
       console.log("here1")
+
       bull.src = "https://static2.bigstockphoto.com/0/7/4/large2/470293591.jpg"
       bear.src = "https://img.freepik.com/premium-photo/bearish-stock-market-crash-economy-crisis-concept-with-digital-red-arrow-glowing-financial-chart-candlestick-bear-illustration-dark-background-with-indicators-3d-rendering_670147-39237.jpg?w=996"
       bear.width = 200;
       bull.width = 200;
+
       //gotta make this an image
       if(sentiment.innerHTML === "Bullish"){
         row.appendChild(bull);
@@ -183,7 +195,7 @@ async function populateRed(){
         row.appendChild(bear);
        
       }
-      
+     
       
       redd.append(row);
   })

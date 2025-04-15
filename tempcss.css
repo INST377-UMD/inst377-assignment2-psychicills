@@ -50,6 +50,43 @@ body{
 
 }
 
+#redd{
+  border: solid black 2px;
+  background-color: aliceblue;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border-collapse: collapse;
+}
+#redd td{
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  border: solid black 2px;
+}
+#redd th{
+  border: solid black 2px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#redd tr th{
+  border: solid black 2px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#redd a{
+
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  
+}
+
+
 
 /*fancy ahh button code*/
 #alignTs{
