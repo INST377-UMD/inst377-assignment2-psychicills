@@ -85,6 +85,7 @@ function stop(){
       }
 
     const ctx = document.getElementById('myChart');
+
     //console.log(tickData())
     const {prices, time} = await tickData();;
     const tflat = time.flat()
@@ -99,7 +100,7 @@ function stop(){
           label: '$ Stock Price',
           data: pflat,
           fill: false,
-          tension: .01
+          tension: .04
         }]
       },
     });
