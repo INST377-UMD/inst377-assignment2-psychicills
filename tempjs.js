@@ -39,7 +39,11 @@ function vopc(){
         console.log(nt)
         document.getElementById("butt").click()
       
-      } 
+      },
+      'Load Dog Breed *breed': (breed) => {
+        console.log(breed)
+        populateDiv(breed)
+      }
     };
 
     // Add our commands to annyang
@@ -268,7 +272,7 @@ async function populateButton(){
      
       b.textContent = result[i].attributes.name;
      
-      b.id = `b${i}`
+      b.className = "button-24"
 
       b.setAttribute("textConent",result[i].attributes.name )
      
@@ -293,7 +297,7 @@ async function populateDiv(name){
   document.getElementById("info");
   const d = document.createElement("div")
   d.style.border = "solid black 2px";
-
+  d.style.backgroundColor = "white";
   info.innerHTML = "";
 
   result.forEach(breed => {
