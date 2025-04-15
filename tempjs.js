@@ -257,7 +257,7 @@ async function dogInfo(){
 }
 
 async function populateButton(){
-  //why error 
+
   document.getElementById("info");
   const apiResponse = await dogInfo();
   const result = await apiResponse;
@@ -265,30 +265,51 @@ async function populateButton(){
   //console.log(result.attributes)
     for (i = 0; i < 10; i++){
       const b = document.createElement("button")
-      const d = document.createElement("div")
-      d.style.border = "solid black 2px";
-      //console.log(result.attributes)
+     
       b.textContent = result[i].attributes.name;
-      d.style.backgroundColor = "white"
-      d.id = `d${i}`
+     
       b.id = `b${i}`
-      console.log(b.id)
-      d.innerHTML = `
-      <h2>Name: ${result[i].attributes.name}</h2>
-      <h3> Description: ${result[i].attributes.description}
-      <h3> Min Life: ${result[i].attributes.life.min} <h3>
-      <h3> Max Life: ${result[i].attributes.life.max} <h3>
-      `
-      dbuttons.append(b)
-      info.append(d)
-      document.getElementById(`d${i}`).style.display = "none";
 
-     // document.getElementById(`b${i}`).addEventListener("click", function(){
-       // document.getElementById(`d${i}`).style.display = "block";
-     // });
-    }
+      b.setAttribute("textConent",result[i].attributes.name )
+     
+      console.log(b.textContent)
     
+      
+      console.log()
+    
+      b.addEventListener("click", function (){
+          populateDiv(b.textContent);
+      });
+
+      dbuttons.append(b)
+     
+    }
   
+}
+
+async function populateDiv(name){
+  const apiResponse = await dogInfo();
+  const result = await apiResponse;
+  document.getElementById("info");
+  const d = document.createElement("div")
+  d.style.border = "solid black 2px";
+
+  info.innerHTML = "";
+
+  result.forEach(breed => {
+    if(breed.attributes.name === name){
+     
+      d.innerHTML = `
+      <h2>Name: ${breed.attributes.name}</h2>
+      <h3> Description: ${breed.attributes.description}
+      <h3> Min Life: ${breed.attributes.life.min} <h3>
+      <h3> Max Life: ${breed.attributes.life.max} <h3>
+      `
+      info.append(d)
+    }
+  })
+
+
 }
 
 async function loadFunc() {
