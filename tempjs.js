@@ -136,7 +136,7 @@ async function tickData(){
   let t = [];
   console.log("here")
    await fetch(`https://api.polygon.io/v2/aggs/ticker/${stock}/range/1/day/${tConvertedPrevious}/${tConvertedCurrent}?
-    adjusted=true&sort=asc&limit=120&apiKey=rbNwfBAdlh4UdKRby4MJLgtP0dSvpTcr`)
+    adjusted=true&sort=asc&limit=120&apiKey=kPaXpBtNXtwx5E4ccz1gJjaPUCB3ef_T`)
     .then(response => response.json()).then(data =>{
       console.log("here2")
       pr.push(data.results.map(st => st.c))
