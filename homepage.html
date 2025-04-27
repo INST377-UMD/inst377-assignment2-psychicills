@@ -1,0 +1,80 @@
+<!--Navigation Bar (5 pts)
+Must have 3 Pages
+Home
+Stocks
+Dogs
+The navigation must have a hover on the li element, which changes color
+If you click on the Nav Element it must go to the corresponding page,
+ Example Clicking Games should go to Games, 
+ and this should work on any of the 3 pages
+
+The Homepage should have 2 Buttons 
+    Stocks
+    Dogs
+These should be custom CSS Buttons, 
+I recommend using this site to be able to use recommended CSS Stylings 
+for Buttons
+The Homepage should retrieve and display Quote every time it loads, 
+that API is here
+ -->
+
+<html>
+    <head>
+        <title>Home Page</title>
+       <script src = "tempjs.js" defer></script>
+       <script src="//cdnjs.cloudflare.com/ajax/libs/annyang/2.6.1/annyang.min.js"></script> 
+        <link rel = "stylesheet" href = "tempcss.css">
+    </head>
+    
+<body onload = "quoteJS()">
+    <h1>INST377 - Activities</h1>
+        <nav  class = "navClass">
+            <ul>
+                <li onclick = "window.location.href = 'homepage.html';">Home</li>
+                <li  onclick = "window.location.href = 'stockspage.html';">Stocks</li>
+                <li  onclick = "window.location.href = 'dogspage.html';">Dogs</li>
+            </ul>
+        </nav>
+        
+        <h3>These are some different activities we can try!</h3>
+
+        <div id = "alignTs" >
+            <button class="button-49" role="button" 
+            onclick = "window.location.href = 'stockspage.html';">Stocks</button>
+            <button onclick = "window.location.href = 'dogpage.html';"
+            class="button-49" role="button">Dogs</button>
+        </div>  
+        <div id = "quote" style="margin-top: 10px;">
+            <h3>Quote of the Page Load</h3>
+            <br>
+            <p id = "quoteShi"></p>
+        </div>
+
+        <div id = "audioDiv" style="margin-top: 10px;">
+            <h3>In this web page there are options to Navigate using Audio!</h3>
+            <p>Ensure your Mic is enabled to use this feature:</p>
+            <ul>
+                <li> Navigate to a Different Page
+                    <ul>
+                        <li>Say: <b>Navigate to &lt;page&gt;</b></li>
+                    </ul>
+                </li>
+                <li>Change the Page Color
+                    <ul>
+                        <li>Say: <b>Change the color to &lt;color&gt;</b></li>
+                    </ul>
+                </li>
+                <li> Say Hello Back to you!
+                    <ul>
+                        <li>Say: <b>Hello</b></li>
+                    </ul>
+                </li>
+            </ul>
+            <div id = "innerAudioDiv">
+                <button onclick="stop()">Turn Off Audio </button>
+                <button onclick="start()">Turn On Audio</button>
+            </div>
+        </div>
+
+    </body>
+</html>
